@@ -1,0 +1,92 @@
+/* Основной фон страницы */
+body {
+    background-color: #f7faff;
+    font-family: 'Arial', sans-serif;
+    color: #2b2b2b;
+    margin: 0;
+    padding: 0;
+}
+
+/* Контейнер страницы */
+.vendors-page-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Заголовок страницы */
+.vendors-header h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2b2b2b;
+    text-align: left;
+    margin-bottom: 24px;
+}
+
+/* Сетка карточек вендоров */
+.vendors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Минимум 300px, адаптивная ширина */
+    gap: 20px; /* Промежуток между карточками */
+    align-items: start;
+}
+
+/* Карточка вендора */
+.vendor-card {
+    background-color: #ffffff; /* Белый фон */
+    border: 1px solid #e0e4ed; /* Светлая рамка */
+    border-radius: 12px; /* Закругленные углы */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Лёгкая тень */
+    padding: 20px;
+    text-decoration: none; /* Убираем подчёркивание ссылок */
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Анимация при наведении */
+}
+
+.vendor-card:hover {
+    transform: translateY(-5px); /* Поднимаем карточку при наведении */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Усиливаем тень */
+}
+
+/* Контейнер логотипа вендора */
+.vendor-logo-container {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.vendor-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Убираем искажение логотипа */
+}
+
+/* Информация о вендоре */
+.vendor-info h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #2b2b2b;
+    text-align: center;
+}
+
+.vendor-info p {
+    font-size: 14px;
+    color: #6c757d;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Мобильные стили */
+@media screen and (max-width: 768px) {
+    .vendors-grid {
+        grid-template-columns: 1fr; /* Одна колонка на маленьких экранах */
+        gap: 15px;
+    }
+}

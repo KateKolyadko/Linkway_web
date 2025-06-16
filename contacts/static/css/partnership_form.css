@@ -1,0 +1,116 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #051638; 
+    color: white;
+}
+
+.partnership-form {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0;
+}
+
+.form-header {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.form-image {
+    max-width: 95%;
+    height: auto;
+    margin: 0;
+}
+
+h1 {
+    font-size: 28px;
+    margin: 15px 30% 8px; 
+    text-align: left;
+    line-height: 1.5;
+}
+
+.form-container {
+    flex: 1;
+    width: 100%;
+    margin-left: 10px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 4px;
+    font-size: 15px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px; 
+    margin-bottom: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px; 
+    text-align: left;
+}
+
+textarea {
+    height: 90px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 4px 0; 
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.checkbox-container input[type="checkbox"] {
+    margin: 0;
+    width: auto;
+}
+
+.checkbox-container label {
+    margin: 0 0 0 8px;
+    padding: 0;
+    width: auto;
+    font-size: 14px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    font-size: 14px;
+    text-align: center;
+    margin-top: 8px;
+    margin-bottom: 15px;
+}
+
+
+button:hover {
+    background-color: #e64a19;
+}
+
+.alert {
+    padding: 8px; 
+    margin-bottom: 8px; 
+    border-radius: 4px;
+    background-color: #f8d7da;
+    color: #721c24;
+    font-size: 14px;
+}

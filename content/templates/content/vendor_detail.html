@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/vendor_detail.css' %}">
+{% endblock %}
+
+{% block header_content %}{% endblock %}
+
+{% block content %}
+<section class="vendor-detail">
+    <div class="vendor-header">
+        <h1>{{ vendor.name }}</h1>
+    </div>
+
+    <div class="vendor-container">
+        <div class="vendor-info">
+            <div class="vendor-logo-and-website">
+                <div class="logo-container">
+                    <img src="{{ vendor.logo.url }}" alt="{{ vendor.name }}" class="vendor-detail-logo">
+                    <div class="divider"></div>
+                    <div class="short-description">
+                        {{ vendor.short_description }}
+                    </div>
+                </div>
+            </div>
+            <div class="vendor-website-container">
+                {% if vendor.website %}
+                <div class="website-info">
+                    <span class="website-text">Официальный сайт партнера: </span>
+                    <a href="{{ vendor.website }}" target="_blank" class="website-link">{{ vendor.website }}</a> <span class="website-text">&gt;&gt;</span>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="vendor-description-contact">
+            <div class="vendor-description">
+                <div class="full-description">
+                    {{ vendor.description|safe }}
+                </div>
+            </div>
+            <div class="contact-block">
+                <p class="contact-text">Возникли вопросы по продукту? Напиши нам!</p>
+                <p class="contact-email">
+                    <a href="mailto:viktoria.z@linkway.by" class="email-link">viktoria.z@linkway.by</a>
+                </p>
+                                
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block vendors_section %}{% endblock %}
+{% block why_choose_us %}{% endblock %}
+{% block registration_section %}{% endblock %}
+{% block news_section %}{% endblock %}

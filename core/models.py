@@ -1,0 +1,28 @@
+from django.db import models
+from content.models import Vendor
+
+class ProjectProposal(models.Model):
+    partner_name = models.CharField("Наименование партнера", max_length=200)
+    email = models.EmailField("Электронная почта")
+    customer_name = models.CharField("Наименование заказчика", max_length=200)
+    vendor = models.ForeignKey(
+        Vendor,
+        verbose_name="Вендор",
+        on_delete=models.CASCADE
+    )
+    comments = models.TextField("Комментарии", blank=True)
+    attachment = models.FileField(
+        "Прикрепленный файл",
+        upload_to='projects/attachments/',
+        blank=True,
+        null=True
+    )
+    created_at = models.DateTimeField("Дата создания", auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Проект для реализации"
+        verbose_name_plural = "Проекты для реализации"
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Проект от {self.partner_name}"

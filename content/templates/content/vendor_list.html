@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/vendors.css' %}"> 
+{% endblock %}
+
+{% block header_content %}{% endblock %}
+
+{% block vendors_section %}
+<section class="custom-vendors-section">
+    <div class="vendors-header-container">
+        <div class="vendors-header">
+            <h1>Вендоры</h1>
+        </div>
+        
+        <div class="vendor-filter-container">
+            <form method="get" class="filter-form">
+                <select name="category" class="category-filter">
+                    <option value="">Все категории</option>
+                    {% for category in categories %}
+                    <option value="{{ category.id }}" 
+                            {% if selected_category == category.id|stringformat:"s" %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>
+    </div>
+
+    <div class="vendors-container">
+        {% for vendor in vendors %}
+        <a href="{% url 'content:vendor_detail' vendor.slug %}" class="vendor-card">
+            <div class="vendor-logo-wrapper">
+                <img src="{{ vendor.logo.url }}" alt="{{ vendor.name }}" class="vendor-logo">
+            </div>
+            <hr class="divider">
+            <div class="vendor-description">
+                {{ vendor.short_description|truncatechars:100 }}
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    document.querySelector('.category-filter').addEventListener('change', function() {
+        this.form.submit();
+    });
+</script>
+{% endblock %}
+
+{% block why_choose_us %}{% endblock %}
+{% block registration_section %}{% endblock %}
+{% block news_section %}{% endblock %}

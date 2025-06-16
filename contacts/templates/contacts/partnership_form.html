@@ -1,0 +1,97 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/partnership_form.css' %}">
+{% endblock %}
+
+{% block header_content %}{% endblock %}
+
+{% block content %}
+<section class="partnership-form">
+    <div class="form-header">
+        <h1>Отправить заявку<br> на партнёрство</h1>
+        <img src="{% static 'img/form.png' %}" alt="Описание изображения" class="form-image">
+    </div>
+    <div class="form-container">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <label for="partner_name">Наименование партнёра</label>
+            <input type="text" id="partner_name" name="partner_name" 
+                   value="{{ form.partner_name.value|default_if_none:'' }}" required>
+            {% if form.partner_name.errors %}
+                <div class="error">{{ form.partner_name.errors }}</div>
+            {% endif %}
+
+            <label for="email">Электронная почта</label>
+            <input type="email" id="email" name="email" 
+                   value="{{ form.email.value|default_if_none:'' }}" required>
+            {% if form.email.errors %}
+                <div class="error">{{ form.email.errors }}</div>
+            {% endif %}
+
+            <label for="address">Адрес</label>
+            <input type="text" id="address" name="address" 
+                   value="{{ form.address.value|default_if_none:'' }}">
+            {% if form.address.errors %}
+                <div class="error">{{ form.address.errors }}</div>
+            {% endif %}
+
+            <label for="source">Как Вы нас нашли?</label>
+            <input type="text" id="source" name="source" 
+                   value="{{ form.source.value|default_if_none:'' }}" required>
+            {% if form.source.errors %}
+                <div class="error">{{ form.source.errors }}</div>
+            {% endif %}
+
+            <label for="comments">Комментарии</label>
+            <textarea id="comments" name="comments">{{ form.comments.value|default_if_none:'' }}</textarea>
+            {% if form.comments.errors %}
+                <div class="error">{{ form.comments.errors }}</div>
+            {% endif %}
+
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="subscribe_newsletter" name="subscribe_newsletter"
+                       {% if form.subscribe_newsletter.value %}checked{% endif %}>
+                <label for="subscribe_newsletter">Я хочу получать рассылку</label>
+            </div>
+
+            <div class="checkbox-container">
+                <input type="checkbox" id="agree_terms" name="agree_terms" required
+                       {% if form.agree_terms.value %}checked{% endif %}>
+                <label for="agree_terms">Я согласен с условиями использования</label>
+                {% if form.agree_terms.errors %}
+                    <div class="error">{{ form.agree_terms.errors }}</div>
+                {% endif %}
+            </div>
+
+            <button type="submit">Отправить</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block footer %}
+<footer>
+    <p>Контакты: +375 29 555 91 45</p>
+    <p>Email: sales@linkway.by</p>
+    <div>
+        <a href="#">Telegram</a>
+        <a href="#">LinkedIn</a>
+    </div>
+</footer>
+{% endblock %}
+{% block vendors_section %}{% endblock %}
+{% block why_choose_us %}{% endblock %}
+{% block registration_section %}{% endblock %}
+{% block news_section %}{% endblock %}

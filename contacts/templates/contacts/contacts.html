@@ -1,0 +1,58 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block title %}Контакты{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/contacts.css' %}">
+{% endblock %}
+
+{% block header_content %}{% endblock %}
+
+{% block contacts %}
+<section class="custom-vendors-section">
+    <div class="vendors-header-container">
+        <div class="vendors-header">
+            <h1>Контакты</h1>
+        </div>
+    </div>
+    
+        <div class="contacts-container">
+                <div class="map-container">
+                    <iframe 
+                        src="https://yandex.ru/map-widget/v1/?ll=27.455246%2C53.883330&mode=search&pt=27.455246%2C53.883330%2Cpm2rdm&text=2200%D0%92%2C%20%D0%B3.%20%D0%9C%D0%B8%D0%BD%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%93%D0%BE%D1%80%D0%B5%D1%86%D0%BA%D0%BE%D0%B3%D0%BE%2C%2014-60%2F2&z=16"
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy"></iframe>
+                </div>
+                
+                <div class="contact-details-contacts">
+            <div class="address-container">
+                <div class="orange-line"></div>
+                <p>2200В, г. Минск, ул. Горецкого, 14-60/2</p>
+            </div>
+            <p>Телефон:</p>
+            <a href="tel:+375295559145">+375 29 555 91 45</a>
+            <p>Электронная почта:</p>
+            <a href="mailto:sales@linkway.by">sales@linkway.by</a>
+            
+            <div class="social-links-contacts">
+                <p>Мы в социальных сетях:</p>
+                <div class="contact-social-icons"> 
+                    <a href="https://t.me/LinkwayBY" class="contact-social-link" target="_blank"> 
+                        <img src="{% static 'img/telegram.png' %}" alt="Telegram">
+                    </a>
+                    <a href="#" class="contact-social-link"> 
+                        <img src="{% static 'img/linkedin.png' %}" alt="LinkedIn">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block vendors_section %}{% endblock %}
+{% block why_choose_us %}{% endblock %}
+{% block registration_section %}{% endblock %}
+{% block news_section %}{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/vendors.css' %}">
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+{% endblock %}
+
+{% block news_section %}
+<section class="news-section">
+    <div class="news-header">
+        <h2>Новости</h2>
+    </div>
+    <div class="news-filter">
+            {% for button in filter_buttons %}
+            <a href="?category={{ button.value|urlencode }}" 
+               class="filter-button {% if current_category|lower == button.value|lower %}active{% endif %}">
+               {{ button.name }}
+            </a>
+            {% endfor %}
+        </div>
+    
+    <div class="news-container">
+        {% for news in latest_news %}  
+        <a href="{% url 'content:news_detail' news.pk %}" class="news-card-link">
+            <div class="news-image-wrapper">
+                {% if news.background %}
+                <img src="{{ news.background.url }}" alt="{{ news.title }}" class="news-image">
+                {% endif %}
+            </div>
+            <div class="news-info">
+                <div class="news-date">{{ news.pub_date|date:"d.m.Y" }}</div>
+                <h3 class="news-title">{{ news.title }}</h3>
+                <div class="news-categories">
+                    {% for category in news.categories.all %}
+                    <span class="news-category" data-category="{{ category.name|lower }}">
+                        {{ category.name }}
+                    </span>
+                    {% endfor %}
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}
+{% block header_content %}{% endblock %}
+{% block vendors_section %}{% endblock %}
+{% block why_choose_us %}{% endblock %}
+{% block registration_section %}{% endblock %}
