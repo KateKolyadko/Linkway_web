@@ -1,16 +1,17 @@
 from django.db import models
 from content.models import Vendor
+from encrypted_model_fields.fields import EncryptedCharField, EncryptedEmailField, EncryptedTextField
 
 class ProjectProposal(models.Model):
-    partner_name = models.CharField("Наименование партнера", max_length=200)
-    email = models.EmailField("Электронная почта")
-    customer_name = models.CharField("Наименование заказчика", max_length=200)
+    partner_name = EncryptedCharField("Наименование партнера", max_length=200)
+    email = EncryptedEmailField("Электронная почта")
+    customer_name = EncryptedCharField("Наименование заказчика", max_length=200)
     vendor = models.ForeignKey(
         Vendor,
         verbose_name="Вендор",
         on_delete=models.CASCADE
     )
-    comments = models.TextField("Комментарии", blank=True)
+    comments = EncryptedTextField("Комментарии", blank=True)
     attachment = models.FileField(
         "Прикрепленный файл",
         upload_to='projects/attachments/',

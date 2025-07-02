@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
-from django_ckeditor_5.fields import CKEditor5Field  
+from django_ckeditor_5.fields import CKEditor5Field
+from encrypted_model_fields.fields import EncryptedCharField, EncryptedEmailField
 
 class VendorCategory(models.Model):
     """Классы/категории для сортировки вендоров"""
@@ -73,19 +74,18 @@ class News(models.Model):
 
 
 class NewsRegistration(models.Model):
-    """Регистрации на мероприятия в новостях"""
     news = models.ForeignKey(
         News,
         verbose_name="Новость",
         related_name="registrations",
         on_delete=models.CASCADE
     )
-    company_name = models.CharField("Название компании", max_length=200)
-    email = models.EmailField("Электронная почта")
-    phone = models.CharField("Номер телефона", max_length=20)
-    first_name = models.CharField("Имя", max_length=100)
-    last_name = models.CharField("Фамилия", max_length=100)
-    position = models.CharField("Должность", max_length=150)
+    company_name = EncryptedCharField("Название компании", max_length=200)
+    email = EncryptedEmailField("Электронная почта")
+    phone = EncryptedCharField("Номер телефона", max_length=20)
+    first_name = EncryptedCharField("Имя", max_length=100)
+    last_name = EncryptedCharField("Фамилия", max_length=100)
+    position = EncryptedCharField("Должность", max_length=150)
     created_at = models.DateTimeField("Дата регистрации", auto_now_add=True)
 
     class Meta:

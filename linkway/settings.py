@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     # Сторонние приложения
     'django_ckeditor_5',
     'nested_admin',
+    'encrypted_model_fields',  
     
     # Локальные приложения
     'core',
@@ -140,5 +141,6 @@ CKEDITOR_5_CONFIGS = {
 }
 
 
-# Для локального хранения файлов,нужно будет заменить локальное на обдлачное
+# Для локального хранения файлов,нужно будет заменить локальное на облачное
 CKEDITOR_5_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'  
+FIELD_ENCRYPTION_KEY = '9QqW-4VO2q2Q4omapBNB8K2gnz4JADxaelt_7MTCSwE='
